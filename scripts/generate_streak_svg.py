@@ -3,12 +3,45 @@
 Works standalone; designed to run in a GitHub Action daily to stay live.
 Usage: python generate_streak_svg.py [username] [output.svg]
 """
-import sys, json, os, datetime, urllib.request
+import sys, json, os, re, datetime, urllib.request
 
 USER = sys.argv[1] if len(sys.argv) > 1 else "Kermito21"
 OUT  = sys.argv[2] if len(sys.argv) > 2 else "streak.svg"
 
+def scrape_github(user):
+    """Scrape github.com's own public contributions fragment (stdlib only).
+    Includes private-contribution counts when the user has enabled the
+    "Private contributions" toggle in their profile's contribution settings."""
+    url = f"https://github.com/users/{user}/contributions"
+    req = urllib.request.Request(url, headers={"User-Agent": "profile-readme-bot/1.0"})
+    with urllib.request.urlopen(req, timeout=25) as r:
+        htm = r.read().decode()
+
+    days = {}
+    for td in re.findall(r'<td[^>]*class="ContributionCalendar-day"[^>]*>|'
+                         r'<td[^>]*ContributionCalendar-day[^>]*>', htm):
+        date = re.search(r'data-date="(\d{4}-\d{2}-\d{2})"', td)
+        cid = re.search(r'id="([^"]+)"', td)
+        level = re.search(r'data-level="(\d+)"', td)
+        if date and cid and level:
+            days[cid.group(1)] = {"date": date.group(1),
+                                  "level": int(level.group(1)), "count": 0}
+    for cid, text in re.findall(r'<tool-tip[^>]*for="([^"]+)"[^>]*>([^<]*)</tool-tip>', htm):
+        if cid in days:
+            m = re.match(r"([\d,]+)\s+contribution", text.strip())
+            days[cid]["count"] = int(m.group(1).replace(",", "")) if m else 0
+    if not days:
+        raise RuntimeError("no calendar cells found -- github markup may have changed")
+
+    contribs = sorted(days.values(), key=lambda d: d["date"])
+    return {"contributions": contribs,
+            "total": {"lastYear": sum(d["count"] for d in contribs)}}
+
 def get_data(user):
+    try:
+        return scrape_github(user)
+    except Exception as e:
+        print(f"github scrape failed ({e}); trying jogruber API")
     url = f"https://github-contributions-api.jogruber.de/v4/{user}?y=last"
     try:
         with urllib.request.urlopen(url, timeout=25) as r:
