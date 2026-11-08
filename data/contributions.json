@@ -1,22 +1,22 @@
 {
   "username": "Kermito21",
-  "generated_at": "2026-11-07T13:18:58Z",
+  "generated_at": "2026-11-08T13:39:22Z",
   "range": {
-    "start": "2025-11-02",
+    "start": "2025-11-09",
+    "end": "2026-11-08"
+  },
+  "total_contributions": 6662,
+  "active_days": 216,
+  "avg_per_active_day": 30.8,
+  "current_streak": {
+    "length": 101,
+    "start": "2026-07-30",
     "end": "2026-11-07"
   },
-  "total_contributions": 6661,
-  "active_days": 215,
-  "avg_per_active_day": 31.0,
-  "current_streak": {
-    "length": 100,
-    "start": "2026-07-30",
-    "end": "2026-11-06"
-  },
   "longest_streak": {
-    "length": 100,
+    "length": 101,
     "start": "2026-07-30",
-    "end": "2026-11-06"
+    "end": "2026-11-07"
   },
   "best_day": {
     "date": "2026-09-28",
@@ -73,38 +73,10 @@
     },
     {
       "month": "2026-11",
-      "total": 39
+      "total": 40
     }
   ],
   "days": [
-    {
-      "date": "2025-11-02",
-      "count": 0
-    },
-    {
-      "date": "2025-11-03",
-      "count": 0
-    },
-    {
-      "date": "2025-11-04",
-      "count": 0
-    },
-    {
-      "date": "2025-11-05",
-      "count": 0
-    },
-    {
-      "date": "2025-11-06",
-      "count": 0
-    },
-    {
-      "date": "2025-11-07",
-      "count": 0
-    },
-    {
-      "date": "2025-11-08",
-      "count": 0
-    },
     {
       "date": "2025-11-09",
       "count": 0
@@ -1559,6 +1531,10 @@
     },
     {
       "date": "2026-11-07",
+      "count": 1
+    },
+    {
+      "date": "2026-11-08",
       "count": 0
     }
   ]
