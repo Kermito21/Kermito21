@@ -1,22 +1,22 @@
 {
   "username": "Kermito21",
-  "generated_at": "2026-11-26T17:06:43Z",
+  "generated_at": "2026-11-27T16:50:16Z",
   "range": {
     "start": "2025-11-23",
+    "end": "2026-11-27"
+  },
+  "total_contributions": 6834,
+  "active_days": 235,
+  "avg_per_active_day": 29.1,
+  "current_streak": {
+    "length": 120,
+    "start": "2026-07-30",
     "end": "2026-11-26"
   },
-  "total_contributions": 6831,
-  "active_days": 234,
-  "avg_per_active_day": 29.2,
-  "current_streak": {
-    "length": 119,
-    "start": "2026-07-30",
-    "end": "2026-11-25"
-  },
   "longest_streak": {
-    "length": 119,
+    "length": 120,
     "start": "2026-07-30",
-    "end": "2026-11-25"
+    "end": "2026-11-26"
   },
   "best_day": {
     "date": "2026-09-28",
@@ -73,7 +73,7 @@
     },
     {
       "month": "2026-11",
-      "total": 209
+      "total": 212
     }
   ],
   "days": [
@@ -1551,6 +1551,10 @@
     },
     {
       "date": "2026-11-26",
+      "count": 3
+    },
+    {
+      "date": "2026-11-27",
       "count": 0
     }
   ]
